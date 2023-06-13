@@ -23,10 +23,19 @@ to communication around the project.
 
 <dl>
 <dt id="user-content-angular">
-  <code><strong><a href="#user-content-angular">angular</a></strong>() → <a href="https://codemirror.net/docs/ref#language.LanguageSupport">LanguageSupport</a></code></dt>
+  <code><strong><a href="#user-content-angular">angular</a></strong>(<a id="user-content-angular^config" href="#user-content-angular^config">config</a>&#8288;?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> = {}) → <a href="https://codemirror.net/docs/ref#language.LanguageSupport">LanguageSupport</a></code></dt>
 
 <dd><p>Angular Template language support.</p>
-</dd>
+<dl><dt id="user-content-angular^config">
+  <code><strong><a href="#user-content-angular^config">config</a></strong></code></dt>
+
+<dd><dl><dt id="user-content-angular^config.base">
+  <code><strong><a href="#user-content-angular^config.base">base</a></strong>&#8288;?: <a href="https://codemirror.net/docs/ref#language.LanguageSupport">LanguageSupport</a></code></dt>
+
+<dd><p>Provide an HTML language configuration to use as a base. <em>Must</em>
+be the result of calling <code>html()</code> from <code>@codemirror/lang-html</code>,
+not just any <code>LanguageSupport</code> object.</p>
+</dd></dl></dd></dl></dd>
 <dt id="user-content-angularlanguage">
   <code><strong><a href="#user-content-angularlanguage">angularLanguage</a></strong>: <a href="https://codemirror.net/docs/ref#language.LRLanguage">LRLanguage</a></code></dt>
 

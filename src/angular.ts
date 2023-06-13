@@ -1,5 +1,5 @@
 import {LRLanguage, LanguageSupport} from "@codemirror/language"
-import {htmlLanguage} from "@codemirror/lang-html"
+import {html} from "@codemirror/lang-html"
 import {javascriptLanguage} from "@codemirror/lang-javascript"
 import {styleTags, tags as t} from "@lezer/highlight"
 import {parseMixed, SyntaxNodeRef, Input} from "@lezer/common"
@@ -45,17 +45,14 @@ const attrParser = baseParser.configure({
 
 const textMixed = {parser: textParser}, attrMixed = {parser: attrParser}
 
+const baseHTML = html()
+
+function mkAngular(language: LRLanguage) {
+  return language.configure({wrap: parseMixed(mixAngular)}, "angular")
+}
+
 /// A language provider for Angular Templates.
-export const angularLanguage = LRLanguage.define({
-  name: "angular",
-  parser: htmlLanguage.parser.configure({
-    wrap: parseMixed(mixAngular)
-  }),
-  languageData: {
-    closeBrackets: {brackets: ["[", "{", '"']},
-    indentOnInput: /^\s*[\}\]]$/
-  }
-})
+export const angularLanguage = mkAngular(baseHTML.language as LRLanguage)
 
 function mixAngular(node: SyntaxNodeRef, input: Input) {
   switch (node.name) {
@@ -68,6 +65,22 @@ function mixAngular(node: SyntaxNodeRef, input: Input) {
 }
 
 /// Angular Template language support.
-export function angular() {
-  return new LanguageSupport(angularLanguage)
+export function angular(config: {
+  /// Provide an HTML language configuration to use as a base. _Must_
+  /// be the result of calling `html()` from `@codemirror/lang-html`,
+  /// not just any `LanguageSupport` object.
+  base?: LanguageSupport
+} = {}) {
+  let base = baseHTML
+  if (config.base) {
+    if (config.base.language.name != "html" || !(config.base.language instanceof LRLanguage))
+      throw new RangeError("The base option must be the result of calling html(...)")
+    base = config.base
+  }
+  return new LanguageSupport(
+    base.language == baseHTML.language ? angularLanguage : mkAngular(base.language as LRLanguage),
+    [base.support, base.language.data.of({
+      closeBrackets: {brackets: ["[", "{", '"']},
+      indentOnInput: /^\s*[\}\]]$/
+    })])
 }
