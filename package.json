@@ -1,6 +1,6 @@
 {
   "name": "@codemirror/lang-angular",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Angular Template language support for the CodeMirror code editor",
   "scripts": {
     "test": "cm-runtests",
