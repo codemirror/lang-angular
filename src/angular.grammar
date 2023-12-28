@@ -6,14 +6,14 @@
   @top Attribute {
     (BoundAttributeName { "[" Identifier ("." Identifier)* "]" | "[" "(" Identifier ("." Identifier)* ")" "]" } |
      ReferenceName { "#" Identifier })
-      (Is ExpressionAttributeValue { scriptAttributeValue })? |
+      (Is ExpressionAttributeValue[isolate] { scriptAttributeValue })? |
     (EventName { "(" Identifier ")" } | DirectiveName { "*" Identifier })
-      (Is StatementAttributeValue { scriptAttributeValue })? |
+      (Is StatementAttributeValue[isolate] { scriptAttributeValue })? |
     AttributeName { Identifier } (Is AttributeValue)?
   }
 }
 
-AttributeValue {
+AttributeValue[isolate] {
   '"' (attributeContentDouble | Entity | InvalidEntity | Interpolation)* '"' |
   "'" (attributeContentSingle | Entity | InvalidEntity | Interpolation)* "'"
 }
@@ -23,7 +23,7 @@ scriptAttributeValue {
   "'" AttributeInterpolation { scriptAttributeContentSingle } "'"
 }
 
-Interpolation {
+Interpolation[isolate] {
   "{{" InterpolationContent? "}}"
 }
 
