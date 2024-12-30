@@ -19,6 +19,19 @@ we have a [code of
 conduct](http://contributor-covenant.org/version/1/1/0/) that applies
 to communication around the project.
 
+## Usage
+
+```javascript
+import {EditorView, basicSetup} from "codemirror"
+import {angular} from "@codemirror/lang-angular"
+
+const view = new EditorView({
+  parent: document.body,
+  doc: `<p ng-init="name='Iris'">Hi {{ name }}</p>`,
+  extensions: [basicSetup, angular()]
+})
+```
+
 ## API Reference
 
 @angular
