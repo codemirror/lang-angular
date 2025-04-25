@@ -1,3 +1,9 @@
+## 0.1.4 (2025-04-25)
+
+### Bug fixes
+
+Allow self-closing XML-style tags.
+
 ## 0.1.3 (2023-12-28)
 
 ### Bug fixes
