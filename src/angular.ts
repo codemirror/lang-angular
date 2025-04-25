@@ -45,7 +45,7 @@ const attrParser = baseParser.configure({
 
 const textMixed = {parser: textParser}, attrMixed = {parser: attrParser}
 
-const baseHTML = html()
+const baseHTML = html({selfClosingTags: true})
 
 function mkAngular(language: LRLanguage) {
   return language.configure({wrap: parseMixed(mixAngular)}, "angular")
