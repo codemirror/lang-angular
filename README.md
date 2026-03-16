@@ -2,7 +2,7 @@
 
 # @codemirror/lang-angular [![NPM version](https://img.shields.io/npm/v/@codemirror/lang-angular.svg)](https://www.npmjs.org/package/@codemirror/lang-angular)
 
-[ [**WEBSITE**](https://codemirror.net/) | [**ISSUES**](https://github.com/codemirror/dev/issues) | [**FORUM**](https://discuss.codemirror.net/c/next/) | [**CHANGELOG**](https://github.com/codemirror/lang-angular/blob/main/CHANGELOG.md) ]
+[ [**WEBSITE**](https://codemirror.net/) | [**ISSUES**](https://github.com/codemirror/dev/issues) | [**FORUM**](https://discuss.codemirror.net//) | [**CHANGELOG**](https://github.com/codemirror/lang-angular/blob/main/CHANGELOG.md) ]
 
 This package implements Angular Template language support for the
 [CodeMirror](https://codemirror.net/) code editor.
